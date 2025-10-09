@@ -23,11 +23,9 @@ namespace TPAPI_equipo_24A.Controllers
         // GET: api/Articulo/5
         public string Get(int id)
         {
-            ArticuloNegocio aNegocio = new ArticuloNegocio();
-            List<Articulo> nuevaLista = aNegocio.listarArticulos();
-            return "id";
-
-           // return nuevaLista.Find(x => x.Id == id);
+     
+            return "valor";
+            
         }
 
         // POST: api/Articulo
