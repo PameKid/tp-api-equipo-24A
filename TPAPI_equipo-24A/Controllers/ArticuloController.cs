@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using dominio;
+using Dominio;
+using Negocio;
 
 
 namespace TPAPI_equipo_24A.Controllers
@@ -12,15 +13,21 @@ namespace TPAPI_equipo_24A.Controllers
     public class ArticuloController : ApiController
     {
         // GET: api/Articulo
-        public IEnumerable<string> Get()
+        public IEnumerable<Articulo> Get()
         {
-            return new string[] { "value1", "value2" };
+            ArticuloNegocio aNegocio = new ArticuloNegocio();
+
+            return aNegocio.listarArticulos();
         }
 
         // GET: api/Articulo/5
         public string Get(int id)
         {
-            return "value";
+            ArticuloNegocio aNegocio = new ArticuloNegocio();
+            List<Articulo> nuevaLista = aNegocio.listarArticulos();
+            return "id";
+
+           // return nuevaLista.Find(x => x.Id == id);
         }
 
         // POST: api/Articulo
