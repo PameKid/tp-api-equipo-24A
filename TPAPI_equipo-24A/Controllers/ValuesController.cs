@@ -12,13 +12,13 @@ namespace TPAPI_equipo_24A.Controllers
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "value2" };
+            return new string[] { "Priscila", "Pamela" };
         }
 
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            return "siempre lo mismo";
         }
 
         // POST api/values

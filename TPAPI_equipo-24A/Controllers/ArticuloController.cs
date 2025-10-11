@@ -22,10 +22,13 @@ namespace TPAPI_equipo_24A.Controllers
         }
 
         // GET: api/Articulo/5
-        public string Get(int id)
+
+        //Metodo para buscar
+        public Articulo Get(int id)
         {
-     
-            return "valor";
+            ArticuloNegocio aNegocio = new ArticuloNegocio();
+            List<Articulo> listaArticulo = aNegocio.listarArticulos();
+            return listaArticulo.Find(x=> x.Id == id);
             
         }
 
@@ -46,8 +49,20 @@ namespace TPAPI_equipo_24A.Controllers
         }
 
         // PUT: api/Articulo/5
-        public void Put(int id, [FromBody]string value)
+        public void Put(int id, [FromBody] ArticuloDTO art)
         {
+            ArticuloNegocio aNegocio = new ArticuloNegocio();
+            Articulo articuloNuevo = new Articulo();
+            articuloNuevo.CodArticulo = art.CodArticulo;
+            articuloNuevo.NombreArticulo = art.NombreArticulo;
+            articuloNuevo.Marca = new Marca { IdMarca = art.IdMarca };
+            articuloNuevo.Categoria = new Categoria { IdCategoria = art.IdCategoria };
+            articuloNuevo.Descripcion = art.Descripcion;
+            articuloNuevo.Precio = art.Precio;
+            articuloNuevo.Id = id;
+
+            aNegocio.modificar(articuloNuevo);
+
         }
 
         // DELETE: api/Articulo/5
